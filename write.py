@@ -26,7 +26,9 @@ def write_to_csv(results, filename):
     fieldnames = ('datetime_utc', 'distance_au', 'velocity_km_s', 'designation', 'name', 'diameter_km', 'potentially_hazardous')
     with open(filename, "w") as outfile:
         writer = csv.writer(outfile)
+        # write header first
         writer.writerow(fieldnames)
+        # then attach the data
         for row in results:
             writer.writerow([row.time, row.distance, row.velocity, row.neo.designation, row.neo.name, row.neo.diameter, row.neo.hazardous])
 
