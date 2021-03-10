@@ -127,13 +127,3 @@ class NEODatabase:
                 yield approach
 
 
-if __name__ == "__main__":
-    import extract
-
-    neo_list = extract.load_neos("data/neos.csv")
-    cad_list = extract.load_approaches("data/cad.json")
-    neo_db = NEODatabase(neo_list, cad_list)
-
-    print(neo_db.get_neo_by_name("Ganymed"))
-    print(neo_db.get_neo_by_name("Ganymed").hazardous)
-    print(neo_db.get_neo_by_designation('2020 AY1'))

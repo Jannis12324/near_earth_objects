@@ -74,30 +74,60 @@ class AttributeFilter:
 
 # filter classes implementing the specific get class method of the specified value
 class DiameterFilter(AttributeFilter):
+    """
+    A sub class of the Attribute Filter.
+    Modifies the get class method to get the diameter attribute of the NEO object inside the approach object.
+
+    Will be applied to filter an approach depending on the diameter of the NEO.
+    """
     @classmethod
     def get(cls, approach):
         return approach.neo.diameter
 
 
 class DistanceFilter(AttributeFilter):
+    """
+    A sub class of the Attribute Filter.
+    Modifies the get class method to get the distance attribute of the approach object.
+
+    Will be applied to filter an approach depending on the distance of the approach.
+    """
     @classmethod
     def get(cls, approach):
         return approach.distance
 
 
 class VelocityFilter(AttributeFilter):
+    """
+    A sub class of the Attribute Filter.
+    Modifies the get class method to get the velocity attribute of the approach object.
+
+    Will be applied to filter an approach depending on the velocity of the approach.
+    """
     @classmethod
     def get(cls, approach):
         return approach.velocity
 
 
 class HazardousFilter(AttributeFilter):
+    """
+    A sub class of the Attribute Filter.
+    Modifies the get class method to get the hazardous attribute of the NEO object inside the approach object.
+
+    Will be applied to filter an approach depending if the NEO is classified as hazardous.
+    """
     @classmethod
     def get(cls, approach):
         return approach.neo.hazardous
 
 
 class DateFilter(AttributeFilter):
+    """
+    A sub class of the Attribute Filter.
+    Modifies the get class method to get the time attribute of the approach object.
+
+    Will be applied to filter an approach depending on the time of the approach.
+    """
     @classmethod
     def get(cls, approach):
         return approach.time.date()
@@ -173,7 +203,6 @@ def limit(iterator, n=None):
     :param n: The maximum number of values to produce.
     :yield: The first (at most) `n` values from the iterator.
     """
-    # TODO: Produce at most `n` values from the given iterator.
     if n == 0 or n is None:
         return iterator
     else:

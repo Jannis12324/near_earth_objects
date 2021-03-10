@@ -60,8 +60,6 @@ class NearEarthObject:
         else:
             self.hazardous = False
 
-        # Create an empty initial collection of linked approaches.
-        # dict format for easier linking in the database
         self.approaches = list(approaches)
 
     @property
