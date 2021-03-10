@@ -70,7 +70,11 @@ class AttributeFilter:
         raise UnsupportedCriterionError
 
     def __repr__(self):
+        """
+        Returns a machine readable representation
+        """
         return f"{self.__class__.__name__}(op=operator.{self.op.__name__}, value={self.value})"
+
 
 # filter classes implementing the specific get class method of the specified value
 class DiameterFilter(AttributeFilter):
@@ -80,6 +84,7 @@ class DiameterFilter(AttributeFilter):
 
     Will be applied to filter an approach depending on the diameter of the NEO.
     """
+
     @classmethod
     def get(cls, approach):
         return approach.neo.diameter
@@ -92,6 +97,7 @@ class DistanceFilter(AttributeFilter):
 
     Will be applied to filter an approach depending on the distance of the approach.
     """
+
     @classmethod
     def get(cls, approach):
         return approach.distance
@@ -104,6 +110,7 @@ class VelocityFilter(AttributeFilter):
 
     Will be applied to filter an approach depending on the velocity of the approach.
     """
+
     @classmethod
     def get(cls, approach):
         return approach.velocity
@@ -116,6 +123,7 @@ class HazardousFilter(AttributeFilter):
 
     Will be applied to filter an approach depending if the NEO is classified as hazardous.
     """
+
     @classmethod
     def get(cls, approach):
         return approach.neo.hazardous
@@ -128,6 +136,7 @@ class DateFilter(AttributeFilter):
 
     Will be applied to filter an approach depending on the time of the approach.
     """
+
     @classmethod
     def get(cls, approach):
         return approach.time.date()

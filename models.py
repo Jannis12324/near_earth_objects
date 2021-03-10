@@ -42,7 +42,6 @@ class NearEarthObject:
         :param hazardous: (bool) If NASA classified the NEO as hazardous.
         :param approaches: (list) approaches to earth of the NEO
         """
-
         self.designation = str(designation)
 
         # assigning name
@@ -138,12 +137,10 @@ class CloseApproach:
         formatted string that can be used in human-readable representations and
         in serialization to CSV and JSON files.
         """
-
         return datetime_to_str(self.time)
 
     def __str__(self):
         """Return `str(self)`."""
-
         return (f"At {self.time_str}, '{self.neo.fullname}' approaches Earth at a distance of {self.distance:.2f}"
                 f"au and a velocity of {self.velocity:.2f} km/s.")
 
