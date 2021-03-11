@@ -104,6 +104,7 @@ class CloseApproach:
 
     def __init__(self, designation, time, distance, velocity, **info):
         """Create a new `CloseApproach`.
+
         :param designation: (str) unique id of NEO
         :param time: (UTC date and time) closest approach to earth in format %Y-%b-%d %H:%M
         :param distance: (float) closest distance to earth

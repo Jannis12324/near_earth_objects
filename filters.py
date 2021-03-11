@@ -70,9 +70,7 @@ class AttributeFilter:
         raise UnsupportedCriterionError
 
     def __repr__(self):
-        """
-        Returns a machine readable representation
-        """
+        """Return a machine readable representation."""
         return f"{self.__class__.__name__}(op=operator.{self.op.__name__}, value={self.value})"
 
 
@@ -80,65 +78,90 @@ class AttributeFilter:
 class DiameterFilter(AttributeFilter):
     """
     A sub class of the Attribute Filter.
-    Modifies the get class method to get the diameter attribute of the NEO object inside the approach object.
 
+    Modifies the get class method to get the diameter attribute of the NEO object inside the approach object.
     Will be applied to filter an approach depending on the diameter of the NEO.
     """
 
     @classmethod
     def get(cls, approach):
+        """Overwrite superclass method to get the diameter of the neo object inside the approach object.
+
+        :param approach: (CloseApproach Object) Close Approach to pull the diameter from.
+        :return: (float) The diameter of the CloseApproach object.
+        """
         return approach.neo.diameter
 
 
 class DistanceFilter(AttributeFilter):
     """
     A sub class of the Attribute Filter.
-    Modifies the get class method to get the distance attribute of the approach object.
 
+    Modifies the get class method to get the distance attribute of the approach object.
     Will be applied to filter an approach depending on the distance of the approach.
     """
 
     @classmethod
     def get(cls, approach):
+        """Overwrite superclass method to get the distance of the approach object.
+
+        :param approach: (CloseApproach Object) Close Approach to pull the distance from.
+        :return: (float) The distance of the CloseApproach object.
+        """
         return approach.distance
 
 
 class VelocityFilter(AttributeFilter):
     """
     A sub class of the Attribute Filter.
-    Modifies the get class method to get the velocity attribute of the approach object.
 
+    Modifies the get class method to get the velocity attribute of the approach object.
     Will be applied to filter an approach depending on the velocity of the approach.
     """
 
     @classmethod
     def get(cls, approach):
+        """Overwrite superclass method to get the velocity of the approach object.
+
+        :param approach: (CloseApproach Object) Close Approach to pull the velocity from.
+        :return: (float) The velocity of the CloseApproach object.
+        """
         return approach.velocity
 
 
 class HazardousFilter(AttributeFilter):
     """
     A sub class of the Attribute Filter.
-    Modifies the get class method to get the hazardous attribute of the NEO object inside the approach object.
 
+    Modifies the get class method to get the hazardous attribute of the NEO object inside the approach object.
     Will be applied to filter an approach depending if the NEO is classified as hazardous.
     """
 
     @classmethod
     def get(cls, approach):
+        """Overwrite superclass method to get wether the NEO object inside the approach object is hazardous.
+
+        :param approach: (CloseApproach Object) Close Approach to pull the velocity from.
+        :return: (Bool) If the NEO is hazardous.
+        """
         return approach.neo.hazardous
 
 
 class DateFilter(AttributeFilter):
     """
     A sub class of the Attribute Filter.
-    Modifies the get class method to get the time attribute of the approach object.
 
+    Modifies the get class method to get the time attribute of the approach object.
     Will be applied to filter an approach depending on the time of the approach.
     """
 
     @classmethod
     def get(cls, approach):
+        """Overwrite superclass method to get the date of the approach object.
+
+        :param approach: (CloseApproach Object) Close Approach to pull the date from.
+        :return: (date) The date of the CloseApproach object.
+        """
         return approach.time.date()
 
 
